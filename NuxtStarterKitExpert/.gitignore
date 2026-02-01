@@ -1,0 +1,24 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache  # Cache Nitro en dev (devStorage avec driver 'fs')
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files (ne pas pusher les secrets)
+.env
+.env.*
+!.env.dist

@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "community_pinned_notes",
+  "info": {
+    "singularName": "community-pinned-note",
+    "pluralName": "community-pinned-notes",
+    "displayName": "Community Pinned Note",
+    "description": "Notes épinglées de la communauté (même structure que Note)"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contentMd": {
+      "type": "richtext"
+    },
+    "tagIds": {
+      "type": "json"
+    }
+  }
+}

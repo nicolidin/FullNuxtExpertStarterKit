@@ -1,0 +1,44 @@
+$markdown-size: (
+  xsmall: 0.95rem,
+  small: 1.2rem,
+  medium: 1.6rem,
+  large: 1.9rem,
+);
+
+@mixin markdown-size($size) {
+  @each $name, $size in $markdown-size {
+    --text-size-#{$name}: #{$size};
+  }
+
+  /* Définit la taille du texte et des headers */
+  --text-size: var(--text-size-#{$size});
+  --header-size: calc(
+    var(--text-size) * 1.25
+  ); /* Les titres sont 25% plus grands */
+
+  /* Facteur de réduction (chaque niveau est 83% du précédent) */
+  --scale-factor: 0.83;
+
+  /* h1 prend la valeur de --header-size */
+  h1 {
+    font-size: var(--header-size);
+  }
+
+  /* Génération dynamique des tailles pour h2 à h6 */
+  @for $i from 2 through 6 {
+    h#{$i} {
+      font-size: calc(var(--header-size) * #{pow(0.83, $i - 1)});
+    }
+  }
+
+  /* Réduction de la taille du texte standard */
+  p,
+  li,
+  span,
+  a,
+  blockquote,
+  td,
+  th {
+    font-size: calc(var(--text-size) * 0.85);
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "nuxt-app",
+  "packageManager": "yarn@4.5.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxi dev",
+    "lib:buildPreview": "(cd ../vue-lib-exo-nico-starter-kit && yarn build:watch)",
+    "dev:lib": "LIB_DEV_MODE=true nuxi dev",
+    "dev-full-run-lib": "(yarn run lib:buildPreview &) && yarn dev:lib",
+    "build": "nuxi build",
+    "start": "nuxi start",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview",
+    "postinstall": "nuxi prepare",
+    "format": "prettier -c \"./app/**/*.{js,ts,tsx,scss,css,json,vue}\"",
+    "format:fix": "yarn format --write"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "@nuxt/image": "^1.8.1",
+    "@nuxtjs/i18n": "^9.0.0",
+    "@pinia/nuxt": "^0.5.5",
+    "@vuepic/vue-datepicker": "^9.0.3",
+    "deepmerge": "^4.3.1",
+    "lodash-es": "^4.17.21",
+    "markdown-it": "^14.1.0",
+    "muuri": "^0.9.5",
+    "nuxt": "^4.0.0",
+    "nuxt-auth-utils": "^0.5.28",
+    "pinia": "^2.2.4",
+    "pinia-plugin-persistedstate": "^4.1.1",
+    "remove": "^0.1.5",
+    "sass": "^1.80.4",
+    "sass-loader": "^16.0.2",
+    "sharp": "^0.33.5",
+    "string-width": "^7.2.0",
+    "uuid": "^11.0.2",
+    "vite-plugin-vuetify": "^2.0.4",
+    "vue-lib-exo-corrected": "file:../vue-lib-exo-nico-starter-kit",
+    "vue-router": "latest",
+    "vuedraggable": "^4.1.0",
+    "vuetify": "^3.7.3",
+    "wide-align": "^1.1.5",
+    "zod": "^3.25.32"
+  },
+  "resolutions": {
+    "string-width": "4.2.3",
+    "vite": "^7.3.1"
+  },
+  "devDependencies": {
+    "@sidebase/nuxt-auth": "^0.9.4",
+    "@types/lodash-es": "^4.17.12",
+    "prettier": "^3.5.1"
+  }
+}

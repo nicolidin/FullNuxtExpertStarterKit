@@ -1,0 +1,186 @@
+@use "sass:math"; // Import the Sass math module
+@use "breakpoint" as breakpoint;
+
+$font-family-montserrat: montserrat, sans-serif;
+$font-family-roboto: roboto, sans-serif;
+
+$base-font-size: 16px;
+
+@mixin text($size) {
+  font-size: math.div($size, $base-font-size) * 1rem;
+}
+
+@mixin textFull($size, $weight: 400, $font: $font-family-roboto) {
+  @include text($size);
+  font-weight: $weight;
+  font-family: $font;
+}
+
+@mixin typo-heading-01 {
+  @include textFull(28px, 600, $font-family-montserrat);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(44px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(60px);
+  }
+}
+
+@mixin typo-heading-02 {
+  @include textFull(24px, 600, $font-family-montserrat);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(34px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(44px);
+  }
+}
+
+@mixin typo-heading-03 {
+  @include textFull(22px, 600, $font-family-montserrat);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(28px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(34px);
+  }
+}
+
+@mixin typo-heading-04 {
+  @include textFull(20px, 600, $font-family-montserrat);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(26px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(28px);
+  }
+}
+
+@mixin typo-heading-05 {
+  @include textFull(20px, 600, $font-family-montserrat);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(22px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(24px);
+  }
+}
+
+@mixin typo-heading-06 {
+  @include textFull(18px, 400, $font-family-montserrat);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(20px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(20px);
+  }
+}
+
+@mixin typo-heading-07 {
+  @include textFull(14px, 400, $font-family-montserrat);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(16px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(18px);
+  }
+}
+
+@mixin typo-subtitle {
+  @include textFull($size: 18px, $line: 24px, $weight: 700);
+}
+
+@mixin typo-body-large {
+  @include textFull($size: 16px, $line: 20px);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(17px, 22px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(18px, 24px);
+  }
+}
+
+@mixin typo-body {
+  @include textFull($size: 16px);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(17px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(18px);
+  }
+}
+
+@mixin typo-body-small {
+  @include textFull($size: 15px);
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(16px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(17px);
+  }
+}
+
+@mixin typo-caption {
+  @include textFull($size: 16px);
+  color: #717171;
+
+  @media (min-width: breakpoint.$breakpoint-m) {
+    @include text(17px);
+  }
+
+  @media (min-width: breakpoint.$breakpoint-l) {
+    @include text(18px);
+  }
+}
+
+body {
+  h1 {
+    @include typo-heading-01;
+  }
+
+  h2 {
+    @include typo-heading-02;
+  }
+
+  h3 {
+    @include typo-heading-03;
+  }
+
+  h4 {
+    @include typo-heading-04;
+  }
+
+  h5 {
+    @include typo-heading-05;
+  }
+
+  h6 {
+    @include typo-heading-06;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include typo-body;
+  }
+}

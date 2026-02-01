@@ -1,0 +1,47 @@
+@use "../typography" as typo;
+
+body {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: 800;
+  }
+
+  h6 {
+    font-weight: 600;
+  }
+}
+
+body {
+  h1 {
+    @include typo.typo-heading-03;
+  }
+
+  h2 {
+    @include typo.typo-heading-04;
+  }
+
+  h3 {
+    @include typo.typo-heading-05;
+  }
+
+  h4 {
+    @include typo.typo-heading-06;
+  }
+
+  h5 {
+    @include typo.typo-heading-07;
+  }
+
+  h6 {
+    @include typo.typo-heading-07;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include typo.typo-body;
+  }
+}
