@@ -1,5 +1,7 @@
 # Nuxt Minimal Starter
 
+**Important** : cette application nécessite des **variables d'environnement OIDC / Auth0** pour fonctionner (authentification). Avant de lancer le projet, copiez `.env.dist` vers `.env` et renseignez les variables indiquées dans la section [Setup > Variables d'environnement](#variables-denvironnement). Les valeurs sensibles (OIDC) sont fournies par le formateur.
+
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup

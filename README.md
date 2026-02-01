@@ -1,6 +1,8 @@
-# FullStarterKit – Formation Nuxt Expert
+# FullNuxtExpertStarterKit – Formation Nuxt Expert
 
 Starter kit complet pour la formation Nuxt Expert : Strapi + app Nuxt + lib Vue (vue-lib-exo-nico-starter-kit).
+
+**Important** : l’app Nuxt (**NuxtStarterKitExpert**) nécessite des **variables d’environnement OIDC / Auth0** pour fonctionner. Avant de lancer Nuxt, copiez `NuxtStarterKitExpert/.env.dist` vers `NuxtStarterKitExpert/.env` et renseignez les variables (les valeurs sensibles sont fournies par le formateur). Voir le [README de NuxtStarterKitExpert](NuxtStarterKitExpert/README.md#variables-denvironnement).
 
 ## Structure
 
