@@ -2,56 +2,67 @@
 
 Starter kit complet pour la formation Nuxt Expert : Strapi + app Nuxt + lib Vue (vue-lib-expert-starter-kit).
 
-**Important** : l’app Nuxt (**NuxtStarterKitExpert**) nécessite des **variables d’environnement OIDC / Auth0** pour fonctionner. Avant de lancer Nuxt, copiez `NuxtStarterKitExpert/.env.dist` vers `NuxtStarterKitExpert/.env` et renseignez les variables (les valeurs sensibles sont fournies par le formateur). Voir le [README de NuxtStarterKitExpert](NuxtStarterKitExpert/README.md#variables-denvironnement).
+**Important** : l’app Nuxt (**NuxtStarterKitExpert**) nécessite des **variables d’environnement OIDC / Auth0** pour fonctionner. Copiez `NuxtStarterKitExpert/.env.dist` vers `NuxtStarterKitExpert/.env` avant de lancer Nuxt et renseignez les variables (valeurs fournies par le formateur). Voir le [README de NuxtStarterKitExpert](NuxtStarterKitExpert/README.md#variables-denvironnement).
 
 ## Structure
 
 - **Strapi/** – Backend Strapi (notes, tags, articles, community-pinned-notes). À lancer en premier.
-- **vue-lib-expert-starter-kit/** – Librairie Vue (composant Tag, types, configs). Pas de schémas Zod (à ajouter en formation).
-- **NuxtStarterKitExpert/** – App Nuxt (articles, notes, proxy Strapi simple).
+- **vue-lib-expert-starter-kit/** – Librairie Vue (composants, types, configs).
+- **NuxtStarterKitExpert/** – App Nuxt (articles, notes, proxy Strapi).
 
-## Démarrage
+## Démarrage – Toutes les commandes
+
+Ordre recommandé : Strapi → Lib → Nuxt.
 
 ### 1. Strapi
 
 ```bash
 cd Strapi
 npm install
-npm run dev
+npm run develop
 ```
 
-### 2. Lib (build + watch pour dev avec Nuxt)
+Ouvrir le **portail admin** Strapi (http://localhost:1337/admin) et **se connecter** (créer un compte admin au premier lancement).
 
-Dans un premier terminal :
+### 2. Lib
 
 ```bash
 cd vue-lib-expert-starter-kit
 yarn install
-yarn build          # une fois (génère dist/)
-yarn build:watch    # ou depuis Nuxt : yarn lib:buildPreview
 ```
 
-### 3. Nuxt (avec lib locale)
-
-Dans un second terminal (ou après avoir lancé `lib:buildPreview` depuis la racine Nuxt) :
+### 3. Nuxt
 
 ```bash
 cd NuxtStarterKitExpert
 yarn install
-yarn dev:lib
+cp .env.dist .env
 ```
 
-Ou tout-en-un depuis NuxtStarterKitExpert :
+Ensuite, dans **deux terminaux** (ou un seul avec la lib en arrière-plan) :
+
+**Terminal 1 – build watch de la lib :**
 
 ```bash
-yarn lib:buildPreview   # lance build:watch de la lib (dans ../vue-lib-expert-starter-kit)
-yarn dev:lib            # lance Nuxt en LIB_DEV_MODE (alias vers la lib locale)
+cd NuxtStarterKitExpert
+yarn run lib:buildPreview
 ```
 
-## Récap
+**Terminal 2 – lancer Nuxt en mode lib :**
 
-- **Strapi** : `npm run dev` dans `Strapi/`
-- **Lib** : `yarn build` puis `yarn build:watch` (ou `yarn lib:buildPreview` depuis NuxtStarterKitExpert)
-- **Nuxt** : `yarn dev:lib` dans `NuxtStarterKitExpert/`
+```bash
+cd NuxtStarterKitExpert
+yarn run dev:lib
+```
 
-Les chemins (alias, libRootPath) sont configurés pour que la lib soit dans `../vue-lib-expert-starter-kit` par rapport à NuxtStarterKitExpert.
+## Récap des commandes
+
+| Étape | Dossier | Commandes |
+|-------|---------|-----------|
+| 1. Strapi | `Strapi/` | `npm install` → `npm run develop` → se connecter au portail admin |
+| 2. Lib | `vue-lib-expert-starter-kit/` | `yarn install` |
+| 3. Nuxt | `NuxtStarterKitExpert/` | `yarn install` → `cp .env.dist .env` → `yarn run lib:buildPreview` (term. 1) → `yarn run dev:lib` (term. 2) |
+
+Les chemins sont configurés pour que la lib soit dans `../vue-lib-expert-starter-kit` par rapport à NuxtStarterKitExpert.
+
+**Vérification** : une fois tout lancé, Strapi répond sur le portail, la lib tourne en build watch, Nuxt affiche l’app. Voir la slide « Vérifier que tout est bien en place » dans le support de formation.
