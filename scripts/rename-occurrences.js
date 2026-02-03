@@ -136,27 +136,44 @@ function main() {
     console.log("");
   }
 
-  // 2) Fichiers et dossiers dont le nom contient oldStr
-  const toRename = allEntries.filter(
-    (e) => e.relPath.includes(oldStr)
-  );
-  // Trier par chemin le plus long d'abord (renommer les feuilles puis les parents)
-  toRename.sort((a, b) => b.relPath.length - a.relPath.length);
+  // 2) Renommer uniquement les "segments minimaux" (premier segment du chemin qui contient oldStr).
+  // Ex: pour "vue-lib-exo-starter-kit/src/foo/bar" on ne renomme que le dossier "vue-lib-exo-starter-kit"
+  // → tout le contenu suit, une seule opération au lieu de 64 (évite ENOENT).
+  const entriesWithOld = allEntries.filter((e) => e.relPath.includes(oldStr));
+  const sep = path.sep;
+  const minimalRenames = new Set();
+  for (const { relPath } of entriesWithOld) {
+    const segments = relPath.split(sep);
+    let prefix = [];
+    for (const seg of segments) {
+      prefix.push(seg);
+      if (seg.includes(oldStr)) break;
+    }
+    const minimalRel = prefix.join(sep);
+    const newMinimalRel = minimalRel.split(oldStr).join(newStr);
+    if (newMinimalRel !== minimalRel) minimalRenames.add(minimalRel);
+  }
+  const sortedMinimal = Array.from(minimalRenames).sort((a, b) => a.length - b.length);
 
-  if (toRename.length === 0) {
+  if (sortedMinimal.length === 0) {
     console.log("Aucun fichier ou dossier à renommer.");
     return;
   }
 
-  console.log("Renommage de", toRename.length, "élément(s):");
-  for (const { fullPath, relPath } of toRename) {
+  console.log("Renommage de", sortedMinimal.length, "élément(s):");
+  for (const relPath of sortedMinimal) {
     const newRelPath = relPath.split(oldStr).join(newStr);
+    const fullPath = path.join(root, relPath);
     const newFullPath = path.join(root, newRelPath);
     if (relPath === newRelPath) continue;
     if (dryRun) {
       console.log("  ", relPath, "->", newRelPath);
     } else {
       try {
+        if (!fs.existsSync(fullPath)) {
+          console.warn("  Ignoré (déjà renommé?):", relPath);
+          continue;
+        }
         fs.renameSync(fullPath, newFullPath);
         console.log("  ", relPath, "->", newRelPath);
       } catch (e) {
