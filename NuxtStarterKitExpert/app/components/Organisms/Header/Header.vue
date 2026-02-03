@@ -52,8 +52,8 @@
 </template>
 
 <script setup>
-import { HeaderLayout } from "vue-lib-exo-corrected";
-import { useLanguage, useTheme } from "vue-lib-exo-corrected";
+import { HeaderLayout } from "vue-lib-exo-starter-kit";
+import { useLanguage, useTheme } from "vue-lib-exo-starter-kit";
 
 const { colorRef } = useTheme();
 const { languageRef } = useLanguage();

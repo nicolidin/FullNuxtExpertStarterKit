@@ -37,7 +37,7 @@
     "string-width": "^7.2.0",
     "uuid": "^11.0.2",
     "vite-plugin-vuetify": "^2.0.4",
-    "vue-lib-exo-corrected": "file:../vue-lib-exo-starter-kit",
+    "vue-lib-exo-starter-kit": "1.0.0-beta.0",
     "vue-router": "latest",
     "vuedraggable": "^4.1.0",
     "vuetify": "^3.7.3",

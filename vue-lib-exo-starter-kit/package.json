@@ -1,6 +1,6 @@
 {
-  "name": "vue-lib-exo-corrected",
-  "version": "1.0.1-beta.2",
+  "name": "vue-lib-exo-starter-kit",
+  "version": "1.0.0-beta.0",
   "type": "module",
   "packageManager": "yarn@4.5.0",
   "description": "A lightweight UI kit for Vue 3",
@@ -23,16 +23,16 @@
     "dist",
     "src/styles/"
   ],
-  "main": "./dist/vue-lib-exo-corrected.umd.cjs",
-  "module": "./dist/vue-lib-exo-corrected.js",
+  "main": "./dist/vue-lib-exo-starter-kit.umd.cjs",
+  "module": "./dist/vue-lib-exo-starter-kit.js",
   "style": "./dist/main.scss",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/vue-lib-exo-corrected.js",
-      "require": "./dist/vue-lib-exo-corrected.umd.cjs"
+      "import": "./dist/vue-lib-exo-starter-kit.js",
+      "require": "./dist/vue-lib-exo-starter-kit.umd.cjs"
     },
-    "./styles/vue-lib-exo-corrected.scss": "./src/styles/vue-lib-exo-corrected.scss",
+    "./styles/vue-lib-exo-starter-kit.scss": "./src/styles/vue-lib-exo-starter-kit.scss",
     "./style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"

@@ -12,7 +12,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "VueLibExoCorrected",
-      fileName: "vue-lib-exo-corrected",
+      fileName: "vue-lib-exo-starter-kit",
     },
     rollupOptions: {
       external: [
@@ -25,7 +25,6 @@ export default defineConfig({
         "pinia",
         "pinia-plugin-persistedstate",
         "zod",
-        "uuid"
       ],
       output: {
         globals: {
@@ -43,7 +42,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-        @use "src/styles/vue-lib-exo-corrected.scss" as *;
+        @use "src/styles/vue-lib-exo-starter-kit.scss" as *;
         `,
       },
     },
