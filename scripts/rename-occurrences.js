@@ -136,11 +136,53 @@ function main() {
     console.log("");
   }
 
-  // 2) Renommer uniquement les "segments minimaux" (premier segment du chemin qui contient oldStr).
-  // Ex: pour "vue-lib-exo-starter-kit/src/foo/bar" on ne renomme que le dossier "vue-lib-exo-starter-kit"
-  // → tout le contenu suit, une seule opération au lieu de 64 (évite ENOENT).
+  // 2) Renommages en deux temps pour éviter ENOENT :
+  // 2a) Fichiers/dossiers dont le NOM (dernier segment) contient oldStr → renommer du plus profond au plus court.
+  // 2b) "Segments minimaux" (premier segment du chemin qui contient oldStr) → renommer le dossier racine, tout le contenu suit.
   const entriesWithOld = allEntries.filter((e) => e.relPath.includes(oldStr));
   const sep = path.sep;
+
+  // 2a) Basename contient oldStr (ex: .../vue-lib-exo-starter-kit.scss → .../vue-lib-expert-starter-kit.scss)
+  const byBasename = entriesWithOld.filter((e) => {
+    const segments = e.relPath.split(sep);
+    return segments[segments.length - 1].includes(oldStr);
+  });
+  const sortedByBasename = byBasename
+    .map((e) => e.relPath)
+    .filter((relPath) => {
+      const segments = relPath.split(sep);
+      const newBasename = segments[segments.length - 1].split(oldStr).join(newStr);
+      return newBasename !== segments[segments.length - 1];
+    })
+    .sort((a, b) => b.length - a.length);
+
+  if (sortedByBasename.length > 0) {
+    console.log("Renommage de", sortedByBasename.length, "fichier(s)/dossier(s) (nom contient le texte):");
+    for (const relPath of sortedByBasename) {
+      const segments = relPath.split(sep);
+      const newBasename = segments[segments.length - 1].split(oldStr).join(newStr);
+      const newRelPath = segments.slice(0, -1).concat(newBasename).join(sep);
+      const fullPath = path.join(root, relPath);
+      const newFullPath = path.join(root, newRelPath);
+      if (dryRun) {
+        console.log("  ", relPath, "->", newRelPath);
+      } else {
+        try {
+          if (!fs.existsSync(fullPath)) {
+            console.warn("  Ignoré (déjà renommé?):", relPath);
+            continue;
+          }
+          fs.renameSync(fullPath, newFullPath);
+          console.log("  ", relPath, "->", newRelPath);
+        } catch (e) {
+          console.error("  ERREUR:", relPath, e.message);
+        }
+      }
+    }
+    console.log("");
+  }
+
+  // 2b) Segments minimaux (ex: dossier racine vue-lib-exo-starter-kit → vue-lib-expert-starter-kit)
   const minimalRenames = new Set();
   for (const { relPath } of entriesWithOld) {
     const segments = relPath.split(sep);
@@ -155,31 +197,32 @@ function main() {
   }
   const sortedMinimal = Array.from(minimalRenames).sort((a, b) => a.length - b.length);
 
-  if (sortedMinimal.length === 0) {
-    console.log("Aucun fichier ou dossier à renommer.");
-    return;
-  }
-
-  console.log("Renommage de", sortedMinimal.length, "élément(s):");
-  for (const relPath of sortedMinimal) {
-    const newRelPath = relPath.split(oldStr).join(newStr);
-    const fullPath = path.join(root, relPath);
-    const newFullPath = path.join(root, newRelPath);
-    if (relPath === newRelPath) continue;
-    if (dryRun) {
-      console.log("  ", relPath, "->", newRelPath);
-    } else {
-      try {
-        if (!fs.existsSync(fullPath)) {
-          console.warn("  Ignoré (déjà renommé?):", relPath);
-          continue;
-        }
-        fs.renameSync(fullPath, newFullPath);
+  if (sortedMinimal.length > 0) {
+    console.log("Renommage de", sortedMinimal.length, "dossier(s) racine:");
+    for (const relPath of sortedMinimal) {
+      const newRelPath = relPath.split(oldStr).join(newStr);
+      const fullPath = path.join(root, relPath);
+      const newFullPath = path.join(root, newRelPath);
+      if (relPath === newRelPath) continue;
+      if (dryRun) {
         console.log("  ", relPath, "->", newRelPath);
-      } catch (e) {
-        console.error("  ERREUR:", relPath, e.message);
+      } else {
+        try {
+          if (!fs.existsSync(fullPath)) {
+            console.warn("  Ignoré (déjà renommé?):", relPath);
+            continue;
+          }
+          fs.renameSync(fullPath, newFullPath);
+          console.log("  ", relPath, "->", newRelPath);
+        } catch (e) {
+          console.error("  ERREUR:", relPath, e.message);
+        }
       }
     }
+  }
+
+  if (sortedByBasename.length === 0 && sortedMinimal.length === 0) {
+    console.log("Aucun fichier ou dossier à renommer.");
   }
 }
 
