@@ -7224,7 +7224,7 @@ __metadata:
     string-width: "npm:^7.2.0"
     uuid: "npm:^11.0.2"
     vite-plugin-vuetify: "npm:^2.0.4"
-    vue-lib-exo-corrected: "file:../vue-lib-exo-nico-starter-kit"
+    vue-lib-exo-corrected: "file:../vue-lib-exo-starter-kit"
     vue-router: "npm:latest"
     vuedraggable: "npm:^4.1.0"
     vuetify: "npm:^3.7.3"
@@ -10556,9 +10556,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-lib-exo-corrected@file:../vue-lib-exo-nico-starter-kit::locator=nuxt-app%40workspace%3A.":
+"vue-lib-exo-corrected@file:../vue-lib-exo-starter-kit::locator=nuxt-app%40workspace%3A.":
   version: 1.0.1-beta.2
-  resolution: "vue-lib-exo-corrected@file:../vue-lib-exo-nico-starter-kit#../vue-lib-exo-nico-starter-kit::hash=5e42ff&locator=nuxt-app%40workspace%3A."
+  resolution: "vue-lib-exo-corrected@file:../vue-lib-exo-starter-kit#../vue-lib-exo-starter-kit::hash=17423d&locator=nuxt-app%40workspace%3A."
   peerDependencies:
     lodash-es: ^4.17.21
     markdown-it: ^14.1.0
@@ -10571,7 +10571,7 @@ __metadata:
     vuedraggable: ^4.1.0
     vuetify: ^3.7.3
     zod: ^3.25.32
-  checksum: 10c0/2c227fb95176dccbaae720717be08f8d264d63351978963ae54a3f66c824acaca8abcab71911f6d7e867a26077e4b810ef733db170119c1812f5a3d7af3b51c3
+  checksum: 10c0/d296209ca9bb1f2a7024997bdd6b9dc06ea1bde1f2705455bdc1bfa68bd1ebeaa3120201f68d245676ca06058ccd4252fcffeffdd0a86051abea521fecad6518
   languageName: node
   linkType: hard
 

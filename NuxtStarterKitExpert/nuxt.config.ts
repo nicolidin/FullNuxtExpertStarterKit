@@ -7,7 +7,7 @@ const isLibDev = process.env.LIB_DEV_MODE === 'true'
 const isCloudflarePreset = process.env.NUXT_PRESET === 'cloudflare-pages'
 const libRootPath = path.resolve(
   __dirname,
-  '../vue-lib-exo-nico-starter-kit'
+  '../vue-lib-exo-starter-kit'
 )
 
 export default defineNuxtConfig({
@@ -71,7 +71,7 @@ export default defineNuxtConfig({
 
     server: isLibDev
       ? {
-          // Autoriser les fichiers hors projet : la lib (dont dist/) est dans ../vue-lib-exo-nico-starter-kit
+          // Autoriser les fichiers hors projet : la lib (dont dist/) est dans ../vue-lib-exo-starter-kit
           fs: { allow: [path.resolve(__dirname), libRootPath] },
         }
       : undefined,

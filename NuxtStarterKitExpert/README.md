@@ -85,7 +85,7 @@ Quand on travaille à la fois sur l’app Nuxt et sur la lib `vue-lib-exo-nico-c
 
 #### 3. Workflow
 
-**Prérequis** : la lib est à `../vue-lib-exo-nico-starter-kit` par rapport à ce projet (même repo FullStarterKit).
+**Prérequis** : la lib est à `../vue-lib-exo-starter-kit` par rapport à ce projet (même repo FullStarterKit).
 
 1. **Dans la lib** (`vue-lib-exo-nico-corrected`), **une fois** (après un clone ou si `dist/` est vide) :
    ```bash
