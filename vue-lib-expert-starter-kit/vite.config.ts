@@ -12,7 +12,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "VueLibExoCorrected",
-      fileName: "vue-lib-exo-starter-kit",
+      fileName: "vue-lib-expert-starter-kit",
     },
     rollupOptions: {
       external: [
@@ -42,7 +42,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-        @use "src/styles/vue-lib-exo-starter-kit.scss" as *;
+        @use "src/styles/vue-lib-expert-starter-kit.scss" as *;
         `,
       },
     },

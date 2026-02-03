@@ -7226,7 +7226,7 @@ __metadata:
     string-width: "npm:^7.2.0"
     uuid: "npm:^11.0.2"
     vite-plugin-vuetify: "npm:^2.0.4"
-    vue-lib-exo-starter-kit: "npm:1.0.0-beta.0"
+    vue-lib-expert-starter-kit: "npm:1.0.0-beta.0"
     vue-router: "npm:latest"
     vuedraggable: "npm:^4.1.0"
     vuetify: "npm:^3.7.3"
@@ -10569,9 +10569,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-lib-exo-starter-kit@npm:1.0.0-beta.0":
+"vue-lib-expert-starter-kit@npm:1.0.0-beta.0":
   version: 1.0.0-beta.0
-  resolution: "vue-lib-exo-starter-kit@npm:1.0.0-beta.0"
+  resolution: "vue-lib-expert-starter-kit@npm:1.0.0-beta.0"
   peerDependencies:
     lodash-es: ^4.17.21
     markdown-it: ^14.1.0
@@ -10584,7 +10584,7 @@ __metadata:
     vuedraggable: ^4.1.0
     vuetify: ^3.7.3
     zod: ^3.25.32
-  checksum: 10c0/dd04f622f8839988a4b992ccaf5d7d5c00ead27609731fbb847ff240ddf1f2a4e993c741a34b6c7540fee46651ad5612e901566e9daa2eeb51c6b59e1e1bcb55
+  checksum: 10c0/c9aa19d7e5382f2426a5a0b8c35eaa1d83b5f9cec69c4f6710cb99c153ec93f363e27632161b8e90b89b28e00b49fb565816dfcfac32e13fc939ccf2e31d0619
   languageName: node
   linkType: hard
 

@@ -1,13 +1,13 @@
 import { transformAssetUrls } from 'vite-plugin-vuetify'
 import path from 'path'
 
-// LIB_DEV_MODE : consommer vue-lib-exo-starter-kit depuis son build local (dist/) au lieu de node_modules.
+// LIB_DEV_MODE : consommer vue-lib-expert-starter-kit depuis son build local (dist/) au lieu de node_modules.
 // Voir README § "Développement avec la lib locale (LIB_DEV_MODE)".
 const isLibDev = process.env.LIB_DEV_MODE === 'true'
 const isCloudflarePreset = process.env.NUXT_PRESET === 'cloudflare-pages'
 const libRootPath = path.resolve(
   __dirname,
-  '../vue-lib-exo-starter-kit'
+  '../vue-lib-expert-starter-kit'
 )
 
 export default defineNuxtConfig({
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
     // Alias pour Nitro (serveur) : utiliser le dist compilé même en mode dev
     // car le serveur n'a pas besoin des fichiers source Vue, seulement du code compilé
     alias: isLibDev
-      ? { 'vue-lib-exo-starter-kit': path.resolve(libRootPath, 'dist/vue-lib-exo-starter-kit.js') }
+      ? { 'vue-lib-expert-starter-kit': path.resolve(libRootPath, 'dist/vue-lib-expert-starter-kit.js') }
       : {},
   },
 
@@ -54,15 +54,15 @@ export default defineNuxtConfig({
     // Lib dev : chemin absolu vers dist/style.css. Sinon : résolution via package.json (exports).
     isLibDev
       ? path.resolve(libRootPath, 'dist/style.css')
-      : 'vue-lib-exo-starter-kit/style.css',
+      : 'vue-lib-expert-starter-kit/style.css',
   ],
 
   vite: {
     cacheDir: 'node_modules/.vite',
 
     resolve: {
-      // Lib dev : "vue-lib-exo-starter-kit" → racine de la lib ; package.json de la lib envoie vers dist/.
-      alias: isLibDev ? { 'vue-lib-exo-starter-kit': libRootPath } : {},
+      // Lib dev : "vue-lib-expert-starter-kit" → racine de la lib ; package.json de la lib envoie vers dist/.
+      alias: isLibDev ? { 'vue-lib-expert-starter-kit': libRootPath } : {},
     },
 
     optimizeDeps: {
@@ -71,7 +71,7 @@ export default defineNuxtConfig({
 
     server: isLibDev
       ? {
-          // Autoriser les fichiers hors projet : la lib (dont dist/) est dans ../vue-lib-exo-starter-kit
+          // Autoriser les fichiers hors projet : la lib (dont dist/) est dans ../vue-lib-expert-starter-kit
           fs: { allow: [path.resolve(__dirname), libRootPath] },
         }
       : undefined,
@@ -81,10 +81,10 @@ export default defineNuxtConfig({
         scss: {
           // Lib dev : Sass ne lit pas le package.json "exports" ; avec l'alias il résout
           // "styles/..." en libRootPath/styles/... (inexistant). On force src/styles/... explicite.
-          // Sinon : vue-lib-exo-starter-kit/styles/... résolu via node_modules + exports.
+          // Sinon : vue-lib-expert-starter-kit/styles/... résolu via node_modules + exports.
           additionalData: isLibDev
-            ? `@use "${path.resolve(libRootPath, 'src/styles/vue-lib-exo-starter-kit.scss')}" as *;`
-            : `@use "vue-lib-exo-starter-kit/styles/vue-lib-exo-starter-kit.scss" as *;`,
+            ? `@use "${path.resolve(libRootPath, 'src/styles/vue-lib-expert-starter-kit.scss')}" as *;`
+            : `@use "vue-lib-expert-starter-kit/styles/vue-lib-expert-starter-kit.scss" as *;`,
         },
       },
     },
@@ -93,7 +93,7 @@ export default defineNuxtConfig({
   vue: { template: { transformAssetUrls } },
 
   // Inclure la lib (et vuetify) dans la transpilation pour l'alias et le dist/.
-  build: { transpile: ['vuetify', 'vue-lib-exo-starter-kit'] },
+  build: { transpile: ['vuetify', 'vue-lib-expert-starter-kit'] },
 
   runtimeConfig: {
     public: {

@@ -1,5 +1,5 @@
 // plugins/vuetify.ts
-import {createLidinAppKit, DEFAULT_VUETIFY_CONFIG} from "vue-lib-exo-starter-kit";
+import {createLidinAppKit, DEFAULT_VUETIFY_CONFIG} from "vue-lib-expert-starter-kit";
 
 
 export default defineNuxtPlugin((nuxtApp) => {

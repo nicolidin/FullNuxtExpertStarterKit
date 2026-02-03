@@ -6681,9 +6681,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-lib-exo-starter-kit@workspace:.":
+"vue-lib-expert-starter-kit@workspace:.":
   version: 0.0.0-use.local
-  resolution: "vue-lib-exo-starter-kit@workspace:."
+  resolution: "vue-lib-expert-starter-kit@workspace:."
   dependencies:
     "@chromatic-com/storybook": "npm:^3.2.4"
     "@storybook/addon-a11y": "npm:^8.3.5"

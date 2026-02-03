@@ -1,5 +1,5 @@
 {
-  "name": "vue-lib-exo-starter-kit",
+  "name": "vue-lib-expert-starter-kit",
   "version": "1.0.0-beta.0",
   "type": "module",
   "packageManager": "yarn@4.5.0",
@@ -23,16 +23,16 @@
     "dist",
     "src/styles/"
   ],
-  "main": "./dist/vue-lib-exo-starter-kit.umd.cjs",
-  "module": "./dist/vue-lib-exo-starter-kit.js",
+  "main": "./dist/vue-lib-expert-starter-kit.umd.cjs",
+  "module": "./dist/vue-lib-expert-starter-kit.js",
   "style": "./dist/main.scss",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/vue-lib-exo-starter-kit.js",
-      "require": "./dist/vue-lib-exo-starter-kit.umd.cjs"
+      "import": "./dist/vue-lib-expert-starter-kit.js",
+      "require": "./dist/vue-lib-expert-starter-kit.umd.cjs"
     },
-    "./styles/vue-lib-exo-starter-kit.scss": "./src/styles/vue-lib-exo-starter-kit.scss",
+    "./styles/vue-lib-expert-starter-kit.scss": "./src/styles/vue-lib-expert-starter-kit.scss",
     "./style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"

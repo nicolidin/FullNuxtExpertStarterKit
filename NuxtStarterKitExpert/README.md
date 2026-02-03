@@ -60,8 +60,8 @@ Quand on travaille à la fois sur l’app Nuxt et sur la lib `vue-lib-exo-nico-c
 
 #### 1. Pourquoi c’est configuré comme ça ?
 
-- **Alias** : `vue-lib-exo-starter-kit` pointe vers la racine de la lib. Le `package.json` de la lib renvoie vers `dist/` pour le JS, donc on consomme toujours le **build** (`dist/`), pas les sources.
-- **CSS** : en mode lib, on importe directement `dist/style.css` (chemin absolu). Sinon, on passe par le `package.json` de la lib (`vue-lib-exo-starter-kit/style.css`).
+- **Alias** : `vue-lib-expert-starter-kit` pointe vers la racine de la lib. Le `package.json` de la lib renvoie vers `dist/` pour le JS, donc on consomme toujours le **build** (`dist/`), pas les sources.
+- **CSS** : en mode lib, on importe directement `dist/style.css` (chemin absolu). Sinon, on passe par le `package.json` de la lib (`vue-lib-expert-starter-kit/style.css`).
 - **SCSS** : les variables/mixins partagés viennent de `src/styles/` de la lib en mode dev, pour que les overrides SCSS du projet hôte restent cohérents avec la lib.
 - **`server.fs.allow`** : Vite ne sert par défaut que les fichiers sous la racine du projet. La lib est en dehors (`../../Common/...`), il faut donc l’autoriser explicitement.
 - **`ssr.noExternal`** : en SSR, Nuxt externalise les dépendances. Ici on force à bundle la lib pour que l’alias et le `dist/` soient bien pris en compte côté serveur.
@@ -74,9 +74,9 @@ Quand on travaille à la fois sur l’app Nuxt et sur la lib `vue-lib-exo-nico-c
 | Réglage | Rôle |
 |--------|------|
 | `isLibDev` / `LIB_DEV_MODE` | Active les chemins et alias spécifiques à la lib locale. |
-| `resolve.alias['vue-lib-exo-starter-kit']` | En lib dev : pointe vers la racine de la lib → résolution via `package.json` vers `dist/`. |
-| `css` (élément pour la lib) | En lib dev : `path.resolve(libRootPath, 'dist/style.css')`. Sinon : `vue-lib-exo-starter-kit/style.css`. |
-| `vite.css.preprocessorOptions.scss.additionalData` | En lib dev : `@use` vers `src/styles/vue-lib-exo-starter-kit.scss`. Sinon : via le package. |
+| `resolve.alias['vue-lib-expert-starter-kit']` | En lib dev : pointe vers la racine de la lib → résolution via `package.json` vers `dist/`. |
+| `css` (élément pour la lib) | En lib dev : `path.resolve(libRootPath, 'dist/style.css')`. Sinon : `vue-lib-expert-starter-kit/style.css`. |
+| `vite.css.preprocessorOptions.scss.additionalData` | En lib dev : `@use` vers `src/styles/vue-lib-expert-starter-kit.scss`. Sinon : via le package. |
 | `vite.server.fs.allow` | Autorise l’accès aux fichiers sous la racine du projet **et** sous `libRootPath` (dont `dist/`). |
 | `vite.ssr.noExternal` | Inclut la lib dans le bundle SSR pour respecter l’alias et le `dist/`. |
 | `build.transpile` | Transpile la lib avec le reste de l’app. |
@@ -85,7 +85,7 @@ Quand on travaille à la fois sur l’app Nuxt et sur la lib `vue-lib-exo-nico-c
 
 #### 3. Workflow
 
-**Prérequis** : la lib est à `../vue-lib-exo-starter-kit` par rapport à ce projet (même repo FullStarterKit).
+**Prérequis** : la lib est à `../vue-lib-expert-starter-kit` par rapport à ce projet (même repo FullStarterKit).
 
 1. **Dans la lib** (`vue-lib-exo-nico-corrected`), **une fois** (après un clone ou si `dist/` est vide) :
    ```bash
@@ -106,7 +106,7 @@ Quand on travaille à la fois sur l’app Nuxt et sur la lib `vue-lib-exo-nico-c
 
 #### 4. En cas de problème
 
-- **404 sur `dist/style.css` ou `vue-lib-exo-starter-kit`**  
+- **404 sur `dist/style.css` ou `vue-lib-expert-starter-kit`**  
   Souvent pendant le rebuild de la lib (fichiers en cours d’écriture). Vérifier que la lib a bien `build.emptyOutDir: false`. Si besoin, remettre `server.watch.ignored: [path.resolve(libRootPath, 'dist', '**')]` et utiliser F5 après les modifs de la lib.
 
 - **“Outside of Vite serving allow list”**  
